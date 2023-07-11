@@ -1,6 +1,5 @@
 package praktikum;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +20,6 @@ public class BurgerTest {
 
     private final String ingredient1Name;
     private final float ingredient1Price;
-
 
     private final String expected;
 
@@ -56,10 +54,6 @@ public class BurgerTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-    }
-
-    @After
-    public void tearDown() throws Exception {
     }
 
     @Test
@@ -131,6 +125,6 @@ public class BurgerTest {
         Mockito.when(ingredient.getType()).thenReturn(ingredient1Type);
         Mockito.when(ingredient.getPrice()).thenReturn(ingredient1Price);
         Mockito.when(ingredient.getName()).thenReturn(ingredient1Name);
-        Assert.assertEquals(expected.replaceAll("\n|\r\n", " "), burger.getReceipt().replaceAll("\n|\r\n", " "));
+        Assert.assertEquals(expected.replaceAll("\r|\n|\r\n", ""), burger.getReceipt().replaceAll("\r|\n|\r\n", ""));
     }
 }
